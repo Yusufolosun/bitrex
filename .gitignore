@@ -1,0 +1,7 @@
+.cache
+history.txt
+node_modules
+.DS_Store
+*.log
+deployments/
+.vscode/
