@@ -1,0 +1,35 @@
+[project]
+name = "bitrex"
+description = "Bitcoin Dual-Yield Optimizer on Stacks"
+authors = []
+telemetry = false
+cache_dir = "./.cache"
+requirements = []
+
+[project.clarity]
+version = 4
+epoch = "latest"
+
+[[project.contracts]]
+path = "contracts/traits/sip010-trait.clar"
+
+[[project.contracts]]
+path = "contracts/traits/strategy-trait.clar"
+
+[[project.contracts]]
+path = "contracts/vault-core.clar"
+
+[[project.contracts]]
+path = "contracts/strategy-router.clar"
+
+[[project.contracts]]
+path = "contracts/adapters/adapter-zest.clar"
+
+[[project.contracts]]
+path = "contracts/adapters/adapter-bitflow.clar"
+
+[[project.contracts]]
+path = "contracts/adapters/adapter-stacking.clar"
+
+[[project.contracts]]
+path = "contracts/fee-manager.clar"
