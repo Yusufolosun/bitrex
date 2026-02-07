@@ -1,38 +1,7 @@
 import { WalletProvider } from './contexts/WalletContext';
 import { ConnectButton } from './components/wallet/ConnectButton';
 import { NetworkSwitcher } from './components/wallet/NetworkSwitcher';
-import { WalletInfo } from './components/wallet/WalletInfo';
-import { useWallet } from './contexts/WalletContext';
-
-function Dashboard() {
-  const { isConnected } = useWallet();
-
-  return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-3xl font-bold mb-2">Bitrex Vault</h2>
-        <p className="text-gray-600">Automated Bitcoin yield optimization on Stacks</p>
-      </div>
-
-      {!isConnected ? (
-        <div className="card text-center py-12">
-          <p className="text-gray-600 mb-6">Connect your wallet to view vault dashboard</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="card">
-            <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <button className="btn-primary w-full">Deposit BTC</button>
-              <button className="btn-secondary w-full">Withdraw BTC</button>
-            </div>
-          </div>
-          <WalletInfo />
-        </div>
-      )}
-    </div>
-  );
-}
+import { VaultDashboard } from './components/vault/VaultDashboard';
 
 function Header() {
   return (
@@ -63,7 +32,7 @@ function App() {
         <Header />
         
         <main className="flex-1 container mx-auto px-4 py-8">
-          <Dashboard />
+          <VaultDashboard />
         </main>
         
         <footer className="bg-white border-t py-6 text-center text-sm text-gray-500">
