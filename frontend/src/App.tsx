@@ -1,0 +1,46 @@
+import { WalletProvider } from './contexts/WalletContext';
+import { ConnectButton } from './components/wallet/ConnectButton';
+import { NetworkSwitcher } from './components/wallet/NetworkSwitcher';
+import { VaultDashboard } from './components/vault/VaultDashboard';
+
+function Header() {
+  return (
+    <header className="bg-white shadow-sm">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-bitcoin-600 to-bitcoin-700 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl">B</span>
+            </div>
+            <h1 className="text-2xl font-bold">Bitrex</h1>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <NetworkSwitcher />
+            <ConnectButton />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function App() {
+  return (
+    <WalletProvider>
+      <div className="min-h-screen flex flex-col bg-gray-50">
+        <Header />
+        
+        <main className="flex-1 container mx-auto px-4 py-8">
+          <VaultDashboard />
+        </main>
+        
+        <footer className="bg-white border-t py-6 text-center text-sm text-gray-500">
+          © 2026 Bitrex. Built on Stacks.
+        </footer>
+      </div>
+    </WalletProvider>
+  );
+}
+
+export default App;
