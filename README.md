@@ -37,3 +37,24 @@ clarinet check
 
 ## License
 MIT
+
+## Ì¥ê Security Notes
+
+### Network Configuration
+- **NEVER commit `settings/Mainnet.toml` or `settings/Testnet.toml`** to version control
+- These files contain wallet mnemonics and are excluded via `.gitignore`
+- Use the `.example` template files to create your own configurations
+- For mainnet deployments, use hardware wallets or secure key management
+
+### Setup Instructions
+1. Copy template files:
+```bash
+   cp settings/Mainnet.toml.example settings/Mainnet.toml
+   cp settings/Testnet.toml.example settings/Testnet.toml
+```
+2. Replace placeholder mnemonics with your own secure mnemonics
+3. **Never share or commit these files**
+
+### Devnet Configuration
+- `settings/Devnet.toml` uses publicly known test mnemonics (safe to commit)
+- Only use for local development - these wallets have no real value
