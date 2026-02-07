@@ -1,3 +1,5 @@
+import { StacksMainnet, StacksTestnet, StacksDevnet } from '@stacks/network';
+
 export const CONTRACTS = {
   VAULT_CORE: 'vault-core',
   STRATEGY_ROUTER: 'strategy-router',
@@ -8,28 +10,25 @@ export const CONTRACTS = {
 } as const;
 
 export const CONTRACT_ADDRESSES = {
-  devnet: {
-    deployer: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-  },
-  testnet: {
-    deployer: '', // To be filled after testnet deployment
-  },
-  mainnet: {
-    deployer: '', // To be filled after mainnet deployment
-  },
+  devnet: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
+  testnet: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM', // Update after testnet deployment
+  mainnet: 'SP000000000000000000002Q6VF78', // Update after mainnet deployment
 } as const;
 
 export const NETWORK_CONFIGS = {
   devnet: {
-    name: 'Devnet',
+    name: 'Devnet' as const,
     url: 'http://localhost:3999',
+    network: new StacksDevnet(),
   },
   testnet: {
-    name: 'Testnet',
+    name: 'Testnet' as const,
     url: 'https://api.testnet.hiro.so',
+    network: new StacksTestnet(),
   },
   mainnet: {
-    name: 'Mainnet',
+    name: 'Mainnet' as const,
     url: 'https://api.hiro.so',
+    network: new StacksMainnet(),
   },
 } as const;

@@ -12,24 +12,25 @@ function transformVaultInfo(response: any): VaultInfo {
   const data = response.value;
   
   return {
-    totalShares: parseInt(data['total-shares']?.value || '0'),
-    totalAssets: parseInt(data['total-assets']?.value || '0'),
-    sharePrice: parseInt(data['share-price']?.value || '1000000'), // Default 1:1 ratio
+    totalShares: BigInt(data['total-shares']?.value || '0'),
+    totalAssets: BigInt(data['total-assets']?.value || '0'),
+    sharePrice: BigInt(data['share-price']?.value || '1000000'), // Default 1:1 ratio
     paused: data.paused?.value === true,
+    contractVersion: BigInt(data['contract-version']?.value || '1'),
   };
 }
 
 /**
  * Transform raw user shares from contract response
  */
-function transformUserShares(response: any): number {
+function transformUserShares(response: any): bigint {
   if (response.type === 'uint') {
-    return parseInt(response.value);
+    return BigInt(response.value);
   }
   if (response.value?.value) {
-    return parseInt(response.value.value);
+    return BigInt(response.value.value);
   }
-  return 0;
+  return BigInt(0);
 }
 
 /**
@@ -63,7 +64,7 @@ export function useVaultData() {
     loading: userLoading,
     error: userError,
     refetch: refetchUser,
-  } = useContractRead<number>(
+  } = useContractRead<bigint>(
     {
       contractAddress,
       contractName: CONTRACTS.VAULT_CORE,
@@ -78,7 +79,7 @@ export function useVaultData() {
   const userVaultData: UserVaultData | null = useMemo(() => {
     if (!userShares || !vaultInfo) return null;
 
-    const value = Math.floor((userShares * vaultInfo.sharePrice) / 1_000_000);
+    const value = (userShares * vaultInfo.sharePrice) / BigInt(1_000_000);
     
     return {
       shares: userShares,

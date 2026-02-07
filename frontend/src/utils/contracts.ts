@@ -77,8 +77,9 @@ export function buildReadOnlyArgs(
  * @param microUnits Amount in micro-units
  * @returns Formatted decimal string
  */
-export function formatFromMicroUnits(microUnits: number): string {
-  return (microUnits / 1_000_000).toFixed(6);
+export function formatFromMicroUnits(microUnits: number | bigint): string {
+  const value = typeof microUnits === 'bigint' ? Number(microUnits) : microUnits;
+  return (value / 1_000_000).toFixed(6);
 }
 
 /**

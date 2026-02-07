@@ -1,4 +1,4 @@
-import { Component, ReactNode } from 'react';
+import { Component, type ReactNode } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 
 interface ErrorBoundaryProps {
