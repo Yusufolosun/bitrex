@@ -1,20 +1,20 @@
+import { useState } from 'react';
 import { FiRefreshCw, FiAlertCircle } from 'react-icons/fi';
 import { VaultStats } from './VaultStats';
 import { UserPosition } from './UserPosition';
+import { DepositModal } from './DepositModal';
+import { WithdrawModal } from './WithdrawModal';
 import { useVaultData } from '../../hooks/useVaultData';
 import { useWallet } from '../../contexts/WalletContext';
-
-interface VaultDashboardProps {
-  onDeposit?: () => void;
-  onWithdraw?: () => void;
-}
 
 /**
  * Main vault dashboard component combining statistics and user position
  */
-export function VaultDashboard({ onDeposit, onWithdraw }: VaultDashboardProps) {
+export function VaultDashboard() {
   const { isConnected } = useWallet();
   const { vaultInfo, error, refetchAll, loading } = useVaultData();
+  const [isDepositModalOpen, setIsDepositModalOpen] = useState(false);
+  const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false);
 
   const isPaused = vaultInfo?.paused || false;
 
@@ -77,14 +77,14 @@ export function VaultDashboard({ onDeposit, onWithdraw }: VaultDashboardProps) {
           <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <button
-              onClick={onDeposit}
+              onClick={() => setIsDepositModalOpen(true)}
               disabled={isPaused}
               className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Deposit BTC
             </button>
             <button
-              onClick={onWithdraw}
+              onClick={() => setIsWithdrawModalOpen(true)}
               disabled={isPaused}
               className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -93,6 +93,18 @@ export function VaultDashboard({ onDeposit, onWithdraw }: VaultDashboardProps) {
           </div>
         </div>
       )}
+
+      {/* Modals */}
+      <DepositModal 
+        isOpen={isDepositModalOpen}
+        onClose={() => setIsDepositModalOpen(false)}
+        onSuccess={refetchAll}
+      />
+      <WithdrawModal 
+        isOpen={isWithdrawModalOpen}
+        onClose={() => setIsWithdrawModalOpen(false)}
+        onSuccess={refetchAll}
+      />
     </div>
   );
 }
