@@ -1,0 +1,10 @@
+[network]
+name = "testnet"
+deployment_fee_rate = 10
+
+[accounts.deployer]
+# IMPORTANT: Replace with your own testnet mnemonic
+mnemonic = "your twelve word testnet mnemonic phrase goes here"
+balance = 100_000_000_000
+
+# Add additional test accounts as needed
