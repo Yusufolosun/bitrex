@@ -6,30 +6,30 @@ telemetry = false
 cache_dir = "./.cache"
 requirements = []
 
-[project.clarity]
-version = 4
-epoch = "latest"
-
-[[project.contracts]]
+[contracts.sip010-trait]
 path = "contracts/traits/sip010-trait.clar"
 
-[[project.contracts]]
+[contracts.strategy-trait]
 path = "contracts/traits/strategy-trait.clar"
 
-[[project.contracts]]
+[contracts.vault-core]
 path = "contracts/vault-core.clar"
 
-[[project.contracts]]
+[contracts.strategy-router]
 path = "contracts/strategy-router.clar"
 
-[[project.contracts]]
+[contracts.adapter-zest]
 path = "contracts/adapters/adapter-zest.clar"
 
-[[project.contracts]]
+[contracts.adapter-bitflow]
 path = "contracts/adapters/adapter-bitflow.clar"
 
-[[project.contracts]]
+[contracts.adapter-stacking]
 path = "contracts/adapters/adapter-stacking.clar"
 
-[[project.contracts]]
+[contracts.fee-manager]
 path = "contracts/fee-manager.clar"
+
+[repl]
+costs_version = 3
+parser_version = 2

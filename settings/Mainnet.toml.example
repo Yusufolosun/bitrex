@@ -1,0 +1,10 @@
+[network]
+name = "mainnet"
+deployment_fee_rate = 10
+
+[accounts.deployer]
+# IMPORTANT: Replace with your own mnemonic - NEVER commit real keys
+mnemonic = "your twelve word mnemonic phrase goes here for mainnet deployment"
+balance = 100_000_000_000
+
+# Add additional accounts as needed

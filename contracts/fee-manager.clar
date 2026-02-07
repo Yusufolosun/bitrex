@@ -1,25 +1,15 @@
-;; Bitrex Fee Manager Contract
-;; Handles performance fee calculation and distribution
-
 (define-constant CONTRACT-VERSION u1)
 
-;; Error codes
 (define-constant ERR-NOT-AUTHORIZED (err u400))
 (define-constant ERR-NO-FEES-AVAILABLE (err u401))
 (define-constant ERR-INVALID-FEE-RATE (err u402))
 
-;; Contract owner
 (define-data-var contract-owner principal tx-sender)
-
-;; Fee configuration
 (define-data-var performance-fee-bps uint u100)
-
-;; Fee tracking
 (define-data-var accumulated-fees uint u0)
 (define-data-var last-total-value uint u0)
 (define-data-var total-fees-collected uint u0)
 
-;; Calculate performance fee based on profit
 (define-public (calculate-performance-fee (current-value uint))
   (let
     (
@@ -31,12 +21,10 @@
     )
     (var-set last-total-value current-value)
     (var-set accumulated-fees (+ (var-get accumulated-fees) fee-amount))
-    
     (ok fee-amount)
   )
 )
 
-;; Claim accumulated fees (admin only)
 (define-public (claim-fees (recipient principal))
   (let
     (
@@ -44,26 +32,21 @@
     )
     (asserts! (is-eq tx-sender (var-get contract-owner)) ERR-NOT-AUTHORIZED)
     (asserts! (> fees u0) ERR-NO-FEES-AVAILABLE)
-    
     (var-set total-fees-collected (+ (var-get total-fees-collected) fees))
     (var-set accumulated-fees u0)
-    
     (ok fees)
   )
 )
 
-;; Update performance fee rate
 (define-public (update-fee-rate (new-rate uint))
   (begin
     (asserts! (is-eq tx-sender (var-get contract-owner)) ERR-NOT-AUTHORIZED)
     (asserts! (<= new-rate u1000) ERR-INVALID-FEE-RATE)
-    
     (var-set performance-fee-bps new-rate)
     (ok new-rate)
   )
 )
 
-;; Get fee manager information
 (define-read-only (get-fee-info)
   (ok {
     performance-fee-bps: (var-get performance-fee-bps),
@@ -73,12 +56,10 @@
   })
 )
 
-;; Get current accumulated fees
 (define-read-only (get-accumulated-fees)
   (ok (var-get accumulated-fees))
 )
 
-;; Transfer contract ownership
 (define-public (transfer-ownership (new-owner principal))
   (begin
     (asserts! (is-eq tx-sender (var-get contract-owner)) ERR-NOT-AUTHORIZED)
