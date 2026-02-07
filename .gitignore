@@ -1,7 +1,103 @@
-.cache
-history.txt
-node_modules
-.DS_Store
-*.log
-deployments/
+# Clarinet
+.cache/
+costs-reports.txt
+
+# Network Settings - CRITICAL: Contains wallet mnemonics and private keys
+settings/Mainnet.toml
+settings/Testnet.toml
+# Keep Devnet.toml (safe test keys only) but exclude if using real funds
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+*.env
+
+# IDE and Editor files
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Private keys and secrets (CRITICAL)
+*.pem
+*.key
+*.keys
+*.private
+secrets/
+private/
+wallet.json
+keychain.json
+
+# Deployment artifacts
+deployments/mainnet/
+deployments/testnet/
+*.deployment.json
+
+# Mac specific
+.AppleDouble
+.LSOverride
+
+# Windows specific
+ehthumbs.db
+
+# Clarinet specific cache and reports
+.clarinet/
+clarinet.log
+
+# Contract deployment history (may contain sensitive tx data)
+history/
+.history/
+
+# Local configuration overrides
+config.local.toml
+settings.local.toml
+
+# Debug files
+debug.log
+*.stackdump
