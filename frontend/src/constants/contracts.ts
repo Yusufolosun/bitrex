@@ -1,8 +1,8 @@
 import { StacksMainnet, StacksTestnet, StacksDevnet } from '@stacks/network';
 
 export const CONTRACTS = {
-  VAULT_CORE: 'vault-core',
-  STRATEGY_ROUTER: 'strategy-router',
+  VAULT: 'bitrex-vault',
+  STRATEGY_ROUTER: 'bitrex-strategy-router',
   FEE_MANAGER: 'fee-manager',
   ADAPTER_ZEST: 'adapter-zest',
   ADAPTER_BITFLOW: 'adapter-bitflow',
@@ -11,7 +11,7 @@ export const CONTRACTS = {
 
 export const CONTRACT_ADDRESSES = {
   devnet: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-  testnet: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM', // Update after testnet deployment
+  testnet: 'ST1M46W6CVGAMH3ZJD3TKMY5KCY48HWAZK1GA0CF0', // ✅ Deployed Feb 9, 2026
   mainnet: 'SP000000000000000000002Q6VF78', // Update after mainnet deployment
 } as const;
 
