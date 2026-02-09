@@ -1,0 +1,9 @@
+# Auto-normalize line endings
+* text=auto
+
+# Force LF line endings for Clarity files
+*.clar text eol=lf
+
+# Force LF for other config files
+*.toml text eol=lf
+*.md text eol=lf
