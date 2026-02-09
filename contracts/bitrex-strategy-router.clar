@@ -118,10 +118,10 @@
   (begin
     (asserts! (is-contract-owner) ERR-NOT-AUTHORIZED)
     (asserts!
-      (>= (- stacks-block-height (var-get last-rebalance-block)) (var-get min-rebalance-interval))
+      (>= (- block-height (var-get last-rebalance-block)) (var-get min-rebalance-interval))
       ERR-REBALANCE-THRESHOLD-NOT-MET
     )
-    (var-set last-rebalance-block stacks-block-height)
+    (var-set last-rebalance-block block-height)
     (ok true)
   )
 )
