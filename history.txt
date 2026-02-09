@@ -1,0 +1,2 @@
+#V2
+(contract-call? .bitrex-strategy-router register-strategy "test" .adapter-zest u3 u4000)

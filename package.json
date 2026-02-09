@@ -1,0 +1,15 @@
+{
+  "name": "bitrex-testnet-tests",
+  "version": "1.0.0",
+  "description": "Testnet integration tests for Bitrex",
+  "scripts": {
+    "test:testnet": "node test-testnet.js"
+  },
+  "devDependencies": {
+    "@scure/bip32": "^2.0.1",
+    "@scure/bip39": "^2.0.1",
+    "@stacks/network": "^7.3.1",
+    "@stacks/transactions": "^7.3.1",
+    "@stacks/wallet-sdk": "^7.2.0"
+  }
+}
