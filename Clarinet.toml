@@ -12,11 +12,11 @@ path = "contracts/traits/sip010-trait.clar"
 [contracts.strategy-trait]
 path = "contracts/traits/strategy-trait.clar"
 
-[contracts.vault-core]
-path = "contracts/vault-core.clar"
+[contracts.bitrex-vault]
+path = "contracts/bitrex-vault.clar"
 
-[contracts.strategy-router]
-path = "contracts/strategy-router.clar"
+[contracts.bitrex-strategy-router]
+path = "contracts/bitrex-strategy-router.clar"
 
 [contracts.adapter-zest]
 path = "contracts/adapters/adapter-zest.clar"
