@@ -5,7 +5,20 @@ costs-reports.txt
 # Network Settings - CRITICAL: Contains wallet mnemonics and private keys
 settings/Mainnet.toml
 settings/Testnet.toml
-# Keep Devnet.toml (safe test keys only) but exclude if using real funds
+settings/*.toml
+!settings/Devnet.toml
+!settings/*.toml.example
+
+# Transaction Scripts - CRITICAL: Contains private keys and wallet data
+scripts/transactions/.env
+scripts/transactions/.env.local
+scripts/transactions/wallet-config.json
+scripts/transactions/private-key.txt
+scripts/transactions/mnemonic.txt
+scripts/transactions/transaction-history.json
+scripts/transactions/failed-transactions.json
+scripts/transactions/transaction-results.json
+scripts/transactions/node_modules/
 
 # Node modules
 node_modules/
@@ -69,15 +82,36 @@ temp/
 *.key
 *.keys
 *.private
+*.p12
+*.pfx
 secrets/
 private/
 wallet.json
 keychain.json
+seed-phrase.txt
+*-private.json
+wallet-*.json
+keys/
+.secrets/
 
 # Deployment artifacts
 deployments/mainnet/
 deployments/testnet/
 *.deployment.json
+
+# Deployment Plans - CRITICAL: May contain configuration and strategy details
+deployments/*.yaml
+deployments/*.yml
+deployments/**/*.plan.yaml
+deployments/**/*.plan.yml
+*.mainnet-plan.yaml
+*.testnet-plan.yaml
+
+# Test results and debug scripts (may contain addresses and transaction data)
+*-results.json
+*-validation.js
+debug-*.js
+test-*.js
 
 # Mac specific
 .AppleDouble
