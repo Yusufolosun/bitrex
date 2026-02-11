@@ -1,0 +1,33 @@
+{
+  "name": "bitrex-transaction-generator",
+  "version": "1.0.0",
+  "description": "Automated transaction generation for Bitrex smart contracts on Stacks blockchain",
+  "main": "generate-transactions.js",
+  "scripts": {
+    "start": "node generate-transactions.js",
+    "dry-run": "DRY_RUN=true node generate-transactions.js",
+    "test": "echo 'Run with: npm start'"
+  },
+  "keywords": [
+    "stacks",
+    "blockchain",
+    "bitrex",
+    "transactions",
+    "automation",
+    "defi"
+  ],
+  "author": "Bitrex",
+  "license": "MIT",
+  "dependencies": {
+    "@stacks/network": "^7.3.1",
+    "@stacks/transactions": "^7.3.1",
+    "dotenv": "^16.6.1"
+  },
+  "optionalDependencies": {
+    "@scure/bip32": "^2.0.1",
+    "@scure/bip39": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
